@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "297200529681",
+    "project_id": "mz-cloud-test",
+    "storage_bucket": "mz-cloud-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297200529681:android:04c679bdfbdafbdc9e9cb0",
+        "android_client_info": {
+          "package_name": "com.notificationsample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297200529681-3q615bf94oahandpbm8md2to7s408gqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjCxf2WLdMmFjFYPnkubeFdLffEPNc61w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297200529681-3q615bf94oahandpbm8md2to7s408gqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
