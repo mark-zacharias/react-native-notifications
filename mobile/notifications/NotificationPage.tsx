@@ -19,7 +19,7 @@ const NotificationPage = () => {
         console.log(`Received a notification token on ${token.os}`);
         setRegisteredToken(token.token);
         setRegisteredOS(token.os);
-        setStatus(`The push notifications token has been received.`);
+        setStatus('The push notifications token has been received.');
 
         if (isRegistered && registeredToken && registeredOS) {
           onRegisterButtonPress();
@@ -28,11 +28,18 @@ const NotificationPage = () => {
 
     const onNotificationReceived = (notification: any) => {
         console.log(`Received a push notification on ${registeredOS}`);
-        setStatus(`Received a push notification...`);
+        setStatus('Received a push notification...');
+
+        let msg = '';
 
         if (notification.data.message) {
-          Alert.alert(Config.appName, `${notification.data.action} action received`);
+          msg += `msg: ${notification.data.message}`;
         }
+        if (notification.data.action) {
+          msg += ` action: ${notification.data.action}`;
+        }
+
+        Alert.alert(Config.appName, msg);
     };
     const notificationService = new DemoNotificationService(onTokenReceived, onNotificationReceived);
     const notificationRegistrationService = new DemoNotificationRegistrationService(Config.apiUrl, Config.apiKey);
@@ -46,13 +53,13 @@ const NotificationPage = () => {
           try {
               setIsBusy(true);
               setStatus('Registering...');
-              const pnPlatform = registeredOS == "ios" ? "apns" : "fcm";
+              const pnPlatform = registeredOS === 'ios' ? 'apns' : 'fcm';
                 const pnToken = registeredToken;
             const request = {
               installationId: deviceId,
               platform: pnPlatform,
               pushChannel: pnToken,
-              tags: []
+              tags: [],
             };
             const response = await notificationRegistrationService.registerAsync(request);
             setStatus(`Registered for ${registeredOS} push notifications`);
@@ -83,11 +90,10 @@ const NotificationPage = () => {
       }
     };
 
-
     return (
         <View style={styles.container}>
         {isBusy &&
-          <ActivityIndicator></ActivityIndicator>
+          <ActivityIndicator />
         }
         <View style={styles.button}>
           <Button title="Register" onPress={onRegisterButtonPress} disabled={isBusy} />
@@ -95,6 +101,7 @@ const NotificationPage = () => {
         <View style={styles.button}>
           <Button title="Deregister" onPress={onDeregisterButtonPress} disabled={isBusy} />
         </View>
+        <Text>Status: {status}</Text>
       </View>
     );
 };
