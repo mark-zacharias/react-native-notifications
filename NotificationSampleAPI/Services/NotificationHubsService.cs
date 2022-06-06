@@ -137,7 +137,7 @@ namespace NotificationSampleAPI.Services
             var sendTasks = new Task[]
             {
                 _hub.SendFcmNativeNotificationAsync(androidPayload, token),
-                _hub.SendAppleNativeNotificationAsync(iOSPayload, token)
+                //_hub.SendAppleNativeNotificationAsync(iOSPayload, token)
             };
 
             return Task.WhenAll(sendTasks);
@@ -148,7 +148,7 @@ namespace NotificationSampleAPI.Services
             var sendTasks = new Task[]
             {
                 _hub.SendFcmNativeNotificationAsync(androidPayload, tags, token),
-                _hub.SendAppleNativeNotificationAsync(iOSPayload, tags, token)
+                //_hub.SendAppleNativeNotificationAsync(iOSPayload, tags, token)
             };
 
             return Task.WhenAll(sendTasks);
