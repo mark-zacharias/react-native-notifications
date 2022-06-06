@@ -8,13 +8,14 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
+  TouchableHighlight,
   useColorScheme,
   View,
 } from 'react-native';
@@ -26,10 +27,9 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import NotificationPage from './notifications/NotificationPage';
 
-const Section: React.FC<{
-  title: string;
-}> = ({children, title}) => {
+const Section: React.FC<{ title: string; }> = ({children, title}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -56,8 +56,9 @@ const Section: React.FC<{
 };
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const [showNotificationPage, setShowNotificationPage] = useState(false);
 
+  const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -87,7 +88,13 @@ const App = () => {
             Read the docs to discover what to do next:
           </Section>
           <LearnMoreLinks />
+          <TouchableHighlight onPress={() => setShowNotificationPage(true)}>
+            <Section title="Notification Test">
+              Sample notifications page
+            </Section>
+          </TouchableHighlight>
         </View>
+        <NotificationPage />
       </ScrollView>
     </SafeAreaView>
   );
