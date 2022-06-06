@@ -58,7 +58,7 @@ const Section: React.FC<{ title: string; }> = ({children, title}) => {
 const App = () => {
   const [showNotificationPage, setShowNotificationPage] = useState(false);
 
-  const isDarkMode = useColorScheme() === 'dark';
+  const isDarkMode = true; // useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -74,7 +74,7 @@ const App = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Step One">
+          {/* <Section title="Step One">
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.
           </Section>
@@ -92,9 +92,9 @@ const App = () => {
             <Section title="Notification Test">
               Sample notifications page
             </Section>
-          </TouchableHighlight>
+          </TouchableHighlight> */}
+          <NotificationPage />
         </View>
-        <NotificationPage />
       </ScrollView>
     </SafeAreaView>
   );
