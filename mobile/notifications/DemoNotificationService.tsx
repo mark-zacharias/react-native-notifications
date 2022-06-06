@@ -6,7 +6,7 @@ export default class DemoNotificationService {
     DemoNotificationHandler.attachTokenReceived(onTokenReceived);
     DemoNotificationHandler.attachNotificationReceived(onNotificationReceived);
     PushNotification.getApplicationIconBadgeNumber(function(number: number) {
-      if(number > 0) {
+      if (number > 0) {
         PushNotification.setApplicationIconBadgeNumber(0);
       }
     });

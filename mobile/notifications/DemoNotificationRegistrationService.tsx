@@ -12,9 +12,9 @@ async registerAsync(request: any): Promise<Response> {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                'apiKey': this.apiKey
+                'apiKey': this.apiKey,
             },
-            body: JSON.stringify(request)
+            body: JSON.stringify(request),
         });
 
         this.validateResponse(registerApiUrl, method, request, result);
@@ -29,8 +29,8 @@ async registerAsync(request: any): Promise<Response> {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                'apiKey': this.apiKey
-            }
+                'apiKey': this.apiKey,
+            },
         });
 
         this.validateResponse(deregisterApiUrl, method, null, result);
@@ -39,7 +39,7 @@ async registerAsync(request: any): Promise<Response> {
 
     private validateResponse(requestUrl: string, method: string, requestPayload: any, response: Response) {
         console.log(`Request: ${method} ${requestUrl} => ${JSON.stringify(requestPayload)}\nResponse: ${response.status}`);
-        if (!response || response.status != 200) {
+        if (!response || response.status !== 200) {
             throw `HTTP error ${response.status}: ${response.statusText}`;
         }
     }
