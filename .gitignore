@@ -75,7 +75,6 @@ buck-out/
 *.userprefs
 *.DS_Store
 *.local_secrets.*
-google-services.json
 
 # Build results
 [Dd]ebug/
