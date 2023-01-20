@@ -73,11 +73,13 @@ namespace NotificationSampleAPI.Services
 
         public async Task<bool> RequestNotificationAsync(NotificationRequest notificationRequest, CancellationToken token)
         {
-            if ((notificationRequest.Silent &&
-                   string.IsNullOrWhiteSpace(notificationRequest?.Action)) ||
-                   (!notificationRequest.Silent &&
-                   (string.IsNullOrWhiteSpace(notificationRequest?.Text)) ||
-                   string.IsNullOrWhiteSpace(notificationRequest?.Action)))
+            if (
+                (notificationRequest.Silent 
+                    && string.IsNullOrWhiteSpace(notificationRequest?.Action)) 
+                || (!notificationRequest.Silent 
+                    && (string.IsNullOrWhiteSpace(notificationRequest?.Text)) 
+                || string.IsNullOrWhiteSpace(notificationRequest?.Action))
+                )
                 return false;
 
             var androidPushTemplate = notificationRequest.Silent ?
